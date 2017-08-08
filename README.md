@@ -17,10 +17,15 @@ After VM is running, click "connect SSH" button. In the window that pops up type
 git clone https://github.com/ctrhodes/gce-initialize.git
 
 mkdir -p $HOME/run
+
 mv gce-initialize/initialize_gce.sh $HOME/run
+
 echo 'export PATH=$PATH:$HOME/run' >> ~/.bashrc
+
 source ~/.bashrc
+
 chmod 755 $HOME/run/initialize_gce.sh
+
 initialize_gce.sh
 
 This script was designed ot be compatable with ChromeOS which has limited SSH capabilities. As such, the easiest way to initialize Oauth with **gcloud init** is to use interactive set-up. When running **gcloud init**, choose something similar to the examples below:
