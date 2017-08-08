@@ -41,7 +41,6 @@ Options
 
    basic Gnome desktop (just file browser)
 
--f, --full
-
-   full Gnome desktop (includes Firefox browser, OpenOffice, etc)
+-f, --full  
+full Gnome desktop (includes Firefox browser, OpenOffice, etc)
   
