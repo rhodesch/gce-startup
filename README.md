@@ -22,7 +22,7 @@ echo 'export PATH=$PATH:$HOME/run' >> ~/.bashrc
 chmod 755 $HOME/run/initialize_gce.sh
 initialize_gce.sh
 
-This script was designed ot be compatable with ChromeOS which has limited SSH capabilities. As such, the easiest way to initialize Oauth with **gcloud init** is to use interactive set-up. When running gcloud init, choose something similar to the examples below:
+This script was designed ot be compatable with ChromeOS which has limited SSH capabilities. As such, the easiest way to initialize Oauth with **gcloud init** is to use interactive set-up. When running **gcloud init**, choose something similar to the examples below:
 
 * account: xxxxx-compute@developer.gserviceaccount.com
 * project: hadoop-000
