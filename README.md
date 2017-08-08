@@ -33,13 +33,10 @@ This script was designed ot be compatable with ChromeOS which has limited SSH ca
 # Usage
 initialize_gce.sh \[OPTION\]
 
-Default useage (i.e. no options) will install a light-weight XFCE GUI desktop
-
-Options
-
--b, --base
-
-   basic Gnome desktop (just file browser)
+Default useage (i.e. no options) will install a light-weight XFCE GUI desktop  
+Options  
+-b, --base  
+basic Gnome desktop (just file browser)
 
 -f, --full  
 full Gnome desktop (includes Firefox browser, OpenOffice, etc)
