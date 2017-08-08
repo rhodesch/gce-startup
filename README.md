@@ -41,3 +41,8 @@ basic Gnome desktop (just file browser)
 -f, --full  
 full Gnome desktop (includes Firefox browser, OpenOffice, etc)
   
+# If needed, view desktop with VNC viewer
+If using Windows or ChromeOS, install VNCviewer client. If using Linux, Remmina Remote Desktop Client.
+* Choose VNC as connection type
+* Enter IP:Port
+* Enter password used in initialize_gce.sh script
