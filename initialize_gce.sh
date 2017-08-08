@@ -136,7 +136,7 @@ echo "Option -base gnome turned on"
 vncserver
 vncserver -kill :1
 
-sudo apt-get install gnome-core
+sudo apt-get --yes install gnome-core
 cat >>$HOME/.vnc/xstartup <<EOL
 
 metacity &
@@ -176,7 +176,7 @@ EOL
 else
     echo "Option -xfce turned on"
     #light install - xfce desktop
-    sudo apt-get install xfce4 xfce4-goodies
+    sudo apt-get --yes install xfce4 xfce4-goodies
 fi
 
 
