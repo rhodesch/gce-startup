@@ -33,7 +33,7 @@ initialize_gce.sh \[OPTION\]
 
 Default useage (i.e. no options) will install a light-weight XFCE GUI desktop
 
-Options
+**Options**
 
 -b, --base  
 basic Gnome desktop (just file browser)
