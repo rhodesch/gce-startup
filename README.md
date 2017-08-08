@@ -19,6 +19,7 @@ git clone https://github.com/ctrhodes/gce-initialize.git
 mkdir -p $HOME/run
 mv gce-initialize/initialize_gce.sh $HOME/run
 echo 'export PATH=$PATH:$HOME/run' >> ~/.bashrc
+source ~/.bashrc
 chmod 755 $HOME/run/initialize_gce.sh
 initialize_gce.sh
 
