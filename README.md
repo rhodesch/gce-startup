@@ -32,6 +32,7 @@ This script was designed ot be compatable with ChromeOS which has limited SSH ca
 
 * account: xxxxx-compute@developer.gserviceaccount.com
 * project: hadoop-000
+* configure GCE settings: y
 * zone: us-central1-a
 
 # Usage
