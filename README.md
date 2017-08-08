@@ -14,7 +14,7 @@ Completing the following options, leave everything else default. Other options m
 * Boot disk image=Ubuntu 16.04 LTS
 * Access scopes=Allow full access to all Cloud APIs
 
-After VN is running, click "connect SSH" button. In the window that pops up type:
+After VM is running, click "connect SSH" button. In the window that pops up type:
 
 git clone https://github.com/ctrhodes/gce-initialize.git
 
