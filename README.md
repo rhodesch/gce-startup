@@ -6,9 +6,7 @@ Google Cloud Platform is a very flexible computing platform. However, automated 
 Several processes in this script can either be automated further (such as Oauth authentication) or made more secure (such as SOCK proxy instead of using public facing firewall rule). However, if you know what these features are, you can adapt this script accordingly, or you don't need this script.
 
 # GCE Set-Up and Running Initialization Script
-Start up a GCE VM as described on GCP instructions.
-
-Completing the following options, leave everything else default. Other options might be compatible with the script, but have not been validated. Complete the following:
+Start up a GCE VM as described on GCP instructions. Choose the following options, leave everything else default. Other options might be compatible with the script, but have not been validated. Complete the following:
 * Instance Name: your choice
 * Zone: your choice
 * Boot disk image=Ubuntu 16.04 LTS
