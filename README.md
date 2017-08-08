@@ -47,7 +47,10 @@ basic Gnome desktop (just file browser)
 
 -f, --full  
 full Gnome desktop (includes Firefox browser, OpenOffice, etc)
-  
+
+# File transfer between GCE and Google Storage
+Based on the way the folders sync between the new GCE and Google Storage, it is best practice to move the files in a particular sequence. When your Google Storage bucket is accessible, either by terminal or GUI, move desired desired files from bucket to "gcs-working" folder in user's home directory. Edit file there (i.e. use in R, etc). After file is saved, move to "gcs-put" folder, where the file is staged for transfer back to Google Storage. The syncs occur every 5 min. While there are more direct ways to access files in buckets, this method works easily from terminal or GUI interfaces, as long as the proper order is followed: gcs-bucket(fused to GS Bucket) > gcs-working > gcs-put(syncs to GS Bucket).
+
 # If needed, view desktop with VNC viewer
 If using Windows or ChromeOS, install VNCviewer client. If using Linux, Remmina Remote Desktop Client.
 * Choose VNC as connection type
