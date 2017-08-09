@@ -1,13 +1,5 @@
 #!/bin/bash
 
-#need a seperate delete instance script:
-#delete static IP
-#delete bucket "general storage"
-#delect bucket "R storage"
-#delete firewall rules "rstudio" and "vnc-server"
-#if possible, delete VM
-#write all variables to a bucket "uninstall" for later scripting
-
 #Change password for VNC and RStudio
 #Make password strong!!
 PASSWRD="chris123"
@@ -36,6 +28,11 @@ STATIC_NAME="external-static-$RAND_NUM"
 INSTANCE_NAME=$(gcloud compute instances list --format="value(name)")
 REGION=$(gcloud config list --format="flattened(compute.region)" | cut -d':' -f2 | tr -d [:space:])
 ZONE=$(gcloud config list --format="flattened(compute.zone)" | cut -d':' -f2 | tr -d [:space:])
+PROJECT=$(gcloud config list --format="flattened(core.project)" | cut -d':' -f2 | tr -d [:space:])
+RSTUDIO="rstudio"
+VNC_SERVER="vnc-server"
+BUCKET_GEN="gen-storage-$RAND_NUM"
+BUCKET_R="r-storage-$RAND_NUM"
 
 echo user: $USER
 echo rand: $RAND_NUM
@@ -43,6 +40,14 @@ echo static: $STATIC_NAME
 echo instance: $INSTANCE_NAME
 echo region: $REGION
 echo zone: $ZONE
+echo project: $PROJECT
+echo rstudio fwall: $RSTUDIO
+echo vnc fwall: $VNC_SERVER
+echo gen-bucket: $BUCKET_GEN
+echo gen-bucket-R: $BUCKET_R
+
+
+
 
 
 #create user password - GCE don't have pswd by default
@@ -89,19 +94,19 @@ ln -s /mnt/gcs-bucket-R $HOME/gcs-bucket-R
 
 
 #cron runs in subshell so it won't print test cases like echo "hello"
-(crontab -l 2>/dev/null; echo "@reboot gcsfuse gen-storage$RAND_NUM /mnt/gcs-bucket") | crontab -
-(crontab -l 2>/dev/null; echo "@reboot gcsfuse r-storage$RAND_NUM /mnt/gcs-bucket-R") | crontab -
-(crontab -l 2>/dev/null; echo "*/5 * * * * gsutil mv $HOME/gcs-put/* gs://gen-storage$RAND_NUM") | crontab -
-(crontab -l 2>/dev/null; echo "*/5 * * * * gsutil mv $HOME/gcs-put-R/* gs://r-storage$RAND_NUM") | crontab -
+(crontab -l 2>/dev/null; echo "@reboot gcsfuse $BUCKET_GEN /mnt/gcs-bucket") | crontab -
+(crontab -l 2>/dev/null; echo "@reboot gcsfuse $BUCKET_R /mnt/gcs-bucket-R") | crontab -
+(crontab -l 2>/dev/null; echo "*/5 * * * * gsutil mv $HOME/gcs-put/* gs://$BUCKET_GEN") | crontab -
+(crontab -l 2>/dev/null; echo "*/5 * * * * gsutil mv $HOME/gcs-put-R/* gs://$BUCKET_R") | crontab -
 (crontab -l 2>/dev/null; echo "") | crontab -
 
 
 #set firewall rules
 #rstudio
-gcloud compute firewall-rules create rstudio --allow tcp:8787
+gcloud compute firewall-rules create $RSTUDIO --allow tcp:8787
 
 #vnc server
-gcloud compute firewall-rules create vnc-server --allow tcp:5901
+gcloud compute firewall-rules create $VNC_SERVER --allow tcp:5901
 
 
 #install vnc server
@@ -203,5 +208,41 @@ sudo apt-get --yes install gdebi-core
 wget https://download2.rstudio.org/rstudio-server-1.0.153-amd64.deb
 sudo gdebi --non-interactive rstudio-server-1.0.153-amd64.deb
 sudo apt-get --yes install libcurl4-openssl-dev libxml2-dev libssl-dev
+
+
+#need a seperate delete instance script:
+
+cat >$HOME/run/cleanup_gce.sh <<EOL
+#!/bin/sh
+
+#delete static IP
+STATIC_NAME="$STATIC_NAME"
+PROJECT="$PROJECT"
+gcloud compute addresses delete $STATIC_NAME --project $PROJECT --region $REGION
+
+#delete firewall rules "rstudio"
+RSTUDIO="$RSTUDIO"
+gcloud compute firewall-rules delete $RSTUDIO
+
+#delete firewall rules "vnc-server"
+VNC_SERVER="$VNC_SERVER"
+gcloud compute firewall-rules delete $VNC_SERVER
+
+#delete bucket "general storage"
+BUCKET_GEN="$BUCKET_GEN"
+gsutil rm gs://$BUCKET_GEN/**
+gsutil rb gs://$BUCKET_GEN
+
+#delect bucket "R storage"
+BUCKET_R="$BUCKET_R"
+gsutil rm gs://$BUCKET_R/**
+gsutil rb gs://$BUCKET_R
+
+
+EOL
+
+
+chmod 755 cleanup_gce.sh
+
 
 
