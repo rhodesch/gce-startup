@@ -191,9 +191,10 @@ sudo sed -i -e '$i \su - currentuser -c "/usr/bin/vncserver :1" &\n' /etc/rc.loc
 sudo sed -i "s/currentuser/$USER/g" /etc/rc.local
 
 
-#start server for immediate use
+#start services for immediate use
 vncserver
-
+gcsfuse $BUCKET_GEN /mnt/gcs-bucket
+gcsfuse $BUCKET_R /mnt/gcs-bucket-R
 
 #install Rstudio
 MIRROR="https://cran.revolutionanalytics.com"
