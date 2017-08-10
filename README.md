@@ -52,7 +52,18 @@ full Gnome desktop (includes Firefox browser, OpenOffice, etc)
 Based on the way the folders sync between the new GCE and Google Storage, it is best practice to move the files in a particular sequence. When your Google Storage bucket is accessible, either by terminal or GUI, move desired desired files from bucket to "gcs-working" folder in user's home directory. Edit file there (i.e. use in R, etc). After file is saved, move to "gcs-put" folder, where the file is staged for transfer back to Google Storage. The syncs occur every 5 min. While there are more direct ways to access files in buckets, this method works easily from terminal or GUI interfaces, as long as the proper order is followed: gcs-bucket(fused to GS Bucket) > gcs-working > gcs-put(syncs to GS Bucket).
 
 # If needed, view desktop with VNC viewer
-If using Windows or ChromeOS, install VNCviewer client. If using Linux, Remmina Remote Desktop Client.
+If using Windows or ChromeOS, install VNCviewer client. If using Linux, Remmina Remote Desktop Client. Find external IP listed under active VM.
 * Choose VNC as connection type
-* Enter External-IP:Port
+* Enter External-IP:5901
 * Enter password used in initialize_gce.sh script
+
+# Start Rstudio
+* Open new browser tab
+* Enter External-IP:8787
+* Enter google username and password used in initialize_gce.sh script
+
+# Clean-up GCP components and delete VM
+The initialization start-up script installs a clean-up script to assist shutting down the running VM. The cleanup script releases the assigned static external IP, deletes the rstudio and vnc firewall rules, and removes the 2 buckets installed for general storage and R related files. This script prevents accumulation of excess GS Buckets and prevents network rule conflicts.
+* Download or transfer any important files from your Google Storage Buckets prior to running the clean-up script. The clean-up script will delete the 2 buckets linked to your VM, as well as any files contained within the buckets
+* Run **cleanup-gce.sh** which is installed in the ~/run folder and has already been added to the VM's PATH.
+* After script completes, delete your VM in Google Cloud Console.
