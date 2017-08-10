@@ -182,6 +182,7 @@ else
     echo "Option -xfce turned on"
     #light install - xfce desktop
     sudo apt-get --yes install xfce4 xfce4-goodies
+    sudo apt-get --yes install gnome-icon-theme
 fi
 
 
