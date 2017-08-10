@@ -78,8 +78,8 @@ sudo apt-get install gcsfuse
 
 
 #create buckets
-gsutil mb -c regional -l us-central1 gs://gen-storage$RAND_NUM/
-gsutil mb -c regional -l us-central1 gs://r-storage$RAND_NUM/
+gsutil mb -c regional -l us-central1 gs://$BUCKET_GEN/
+gsutil mb -c regional -l us-central1 gs://$BUCKET_R/
 
 #alter /mnt permissions so can create folders
 sudo chmod -R 777 /mnt/
