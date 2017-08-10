@@ -56,11 +56,14 @@ Based on the way the folders sync between the new GCE and Google Storage, it is 
 
 # If needed, view desktop with VNC viewer
 If using Windows or ChromeOS, install VNCviewer client. If using Linux, Remmina Remote Desktop Client. Find external IP listed under active VM.
+* Find your external IP by typing **gcloud compute addresses list --format="value(address)"** into your VM terminal
+* Open VNC client
 * Choose VNC as connection type
 * Enter External-IP:5901
 * Enter password used in initialize_gce.sh script
 
 # Start Rstudio
+* Find your external IP by typing **gcloud compute addresses list --format="value(address)"** into your VM terminal
 * Open new browser tab
 * Enter External-IP:8787
 * Enter google username and password used in initialize_gce.sh script
