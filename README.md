@@ -12,7 +12,7 @@ Start up a GCE VM as described on GCP instructions. Choose the following options
 * Boot disk image=Ubuntu 16.04 LTS
 * Access scopes=Allow full access to all Cloud APIs
 
-After VM is running, click "connect SSH" button. In the window that pops up type:
+After VM is running, click "connect SSH" button. In the window that pops up copy and paste the following 7 commands:
 
 git clone https://github.com/ctrhodes/gce-initialize.git
 
