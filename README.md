@@ -28,10 +28,13 @@ chmod 755 $HOME/run/initialize_gce.sh
 
 initialize_gce.sh
 
+Optionally, before running **initialize_gce.sh**, edit the script and change the password to a password of your choice:  
+nano ~/run/initialize_gce.sh
+
 This script was designed ot be compatable with ChromeOS which has limited SSH capabilities. As such, the easiest way to initialize Oauth with **gcloud init** is to use interactive set-up. When running **gcloud init**, choose something similar to the examples below:
 
 * account: xxxxx-compute@developer.gserviceaccount.com
-* project: hadoop-000
+* project: my-project
 * configure GCE settings: y
 * zone: us-central1-a
 
