@@ -65,5 +65,5 @@ If using Windows or ChromeOS, install VNCviewer client. If using Linux, Remmina 
 # Clean-up GCP components and delete VM
 The initialization start-up script installs a clean-up script to assist shutting down the running VM. The cleanup script releases the assigned static external IP, deletes the rstudio and vnc firewall rules, and removes the 2 buckets installed for general storage and R related files. This script prevents accumulation of excess GS Buckets and prevents network rule conflicts.
 * Download or transfer any important files from your Google Storage Buckets prior to running the clean-up script. The clean-up script will delete the 2 buckets linked to your VM, as well as any files contained within the buckets
-* Run **cleanup-gce.sh** which is installed in the ~/run folder and has already been added to the VM's PATH.
+* Run **cleanup_gce.sh** which is installed in the ~/run folder and has already been added to the VM's PATH.
 * After script completes, delete your VM in Google Cloud Console.
