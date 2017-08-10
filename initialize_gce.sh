@@ -238,11 +238,10 @@ BUCKET_R="$BUCKET_R"
 gsutil rm gs://$BUCKET_R/**
 gsutil rb gs://$BUCKET_R
 
-
 EOL
 
 
-chmod 755 cleanup_gce.sh
+chmod 755 $HOME/run/cleanup_gce.sh
 
 
 
