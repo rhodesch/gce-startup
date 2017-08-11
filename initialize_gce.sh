@@ -222,15 +222,15 @@ cat >$HOME/run/cleanup_gce.sh <<EOL
 #delete static IP
 STATIC_NAME="$STATIC_NAME"
 PROJECT="$PROJECT"
-gcloud compute addresses delete $STATIC_NAME --project $PROJECT --region $REGION
+gcloud compute addresses delete $STATIC_NAME --project $PROJECT --region $REGION --quiet
 
 #delete firewall rules "rstudio"
 RSTUDIO="$RSTUDIO"
-gcloud compute firewall-rules delete $RSTUDIO
+gcloud compute firewall-rules delete $RSTUDIO --quiet
 
 #delete firewall rules "vnc-server"
 VNC_SERVER="$VNC_SERVER"
-gcloud compute firewall-rules delete $VNC_SERVER
+gcloud compute firewall-rules delete $VNC_SERVER --quiet
 
 #delete bucket "general storage"
 BUCKET_GEN="$BUCKET_GEN"
