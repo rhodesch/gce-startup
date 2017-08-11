@@ -178,6 +178,8 @@ metacity &
 nautilus &
 EOL
 
+chmod 755 $HOME/.vnc/xstartup
+
 else
     echo "Option -xfce turned on"
     #light install - xfce desktop
