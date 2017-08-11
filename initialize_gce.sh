@@ -153,7 +153,7 @@ EOL
 elif [[ $1 = "-f" ]] || [[ $1 = "--full" ]]
 then
 echo "Option -full gnome turned on"
-sudo apt-get update && sudo apt-get upgrade
+sudo apt-get update && sudo apt-get --yes upgrade
 sudo apt-get --yes install ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
 
 #create startup file
