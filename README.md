@@ -1,12 +1,14 @@
 # Initialize a new GCE machine for data science use
-This script automates installation and set-up of a GCE VM, installs a GUI desktop and Rstudio server. The script is designed to be compatible with users on remote ChromeOS systems, so inital authentication involves a guided interactive auth login step. All other GCE, desktop and Rstudio setup is automated.
+This script automates installation and set-up of a Google Cloud Platform Compute Engine (GCE) VM, installs a GUI desktop and Rstudio server. The script is designed to be compatible with users on remote ChromeOS systems, so inital authentication involves a guided interactive auth login step. All other GCE, desktop and Rstudio setup is automated.
 
 Google Cloud Platform is a very flexible computing platform. However, automated start-up of Google Compute Engine instances, and set up of related services (i.e. Google Storage or BigQuery) can be time consuming. These tasks can also be difficult for beginners to learn easily. This script aims to simplify set-up of GCE VMs related services. It creates necessary firewall rules, installs Rstudio, and creates a buckets for general storage and R based data science projects. Additionally, as learning to use commands in a bash terminal can have a steep learning curve, it also installs one of several GUI desktops (i.e. a light xfce or a heavier gnome version) to interact with the VM remotely.
 
 Several processes in this script can either be automated further (such as Oauth authentication) or made more secure (such as SOCK proxy instead of using public facing firewall rule). However, if you know what these features are, you can adapt this script accordingly, or you don't need this script.
 
 # GCE Set-Up and Running Initialization Script
-Start up a GCE VM as described on GCP instructions. Choose the following options, leave everything else default. Other options might be compatible with the script, but have not been validated. Complete the following:
+If you have any trouble getting this script, vncserver, or Rstudio server to run: create a new project which will reset any networking rules to defaults. Use Google Cloud Console to create the new project as outlined [here](https://cloud.google.com/resource-manager/docs/creating-managing-projects).
+
+Start up a GCE VM as described [here](https://cloud.google.com/compute/docs/quickstart-linux). Choose the following options, leave everything else default. Other options might be compatible with the script, but have not been validated. Complete the following:
 * Instance Name: your choice
 * Zone: your choice
 * Boot disk image=Ubuntu 16.04 LTS
