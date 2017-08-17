@@ -31,10 +31,12 @@ chmod 755 $HOME/run/initialize_gce.sh
 initialize_gce.sh
 
 Optionally, before running **initialize_gce.sh**, edit the script and change the password to a password of your choice:  
-nano ~/run/initialize_gce.sh
+nano ~/run/initialize_gce.sh  
+Optionally, by default the script installs a light GUI called XFCE. If you feel more comfortable using the classic Ubuntu interface for your GUI desktop try running **initialize_gce.sh -f** or **initialize_gce.sh -b**, which installs different flavors of the Ubuntu desktop. See Usage section below for more details.
 
 This script was designed ot be compatable with ChromeOS which has limited SSH capabilities. As such, the easiest way to initialize Oauth with **gcloud init** is to use interactive set-up. When running **gcloud init**, choose something similar to the examples below:
 
+Examples of input needed during **gloud init** which is the first part of the **initialize_gce.sh** and the only part that requires interactive input from the user:  
 * account: xxxxx-compute@developer.gserviceaccount.com
 * project: my-project
 * configure GCE settings: y
