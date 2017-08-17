@@ -20,32 +20,32 @@ git clone https://github.com/ctrhodes/gce-startup.git
 
 mkdir -p $HOME/run
 
-mv gce-startup/initialize_gce.sh $HOME/run
+mv gce-startup/gce-startup.sh $HOME/run
 
 echo 'export PATH=$PATH:$HOME/run' >> ~/.bashrc
 
 source ~/.bashrc
 
-chmod 755 $HOME/run/initialize_gce.sh
+chmod 755 $HOME/run/gce-startup.sh
 
-initialize_gce.sh
+gce-startup.sh
 
-Optional: Before running **initialize_gce.sh**, edit the script and change the password to a password of your choice:  
+Optional: Before running **gce-startup.sh**, edit the script and change the password to a password of your choice:  
 nano ~/run/initialize_gce.sh  
 On line 5, find: PASSWRD="chris123", change the string within the quotes to your preferred password
 
-Optionally: By default the script installs a light GUI called XFCE. If you feel more comfortable using the classic Ubuntu interface for your GUI desktop try running **initialize_gce.sh -f** or **initialize_gce.sh -b**, which installs different flavors of the Ubuntu desktop. See Usage section below for more details.
+Optionally: By default the script installs a light GUI called XFCE. If you feel more comfortable using the classic Ubuntu interface for your GUI desktop try running **gce-startup.sh -f** or **gce-startup.sh -b**, which installs different flavors of the Ubuntu desktop. See Usage section below for more details.
 
 This script was designed ot be compatable with ChromeOS which has limited SSH capabilities. As such, the easiest way to initialize Oauth with **gcloud init** is to use interactive set-up. When running **gcloud init**, choose something similar to the examples below:
 
-Examples of input needed during **gloud init** which is the first part of the **initialize_gce.sh** and the only part that requires interactive input from the user:  
+Examples of input needed during **gloud init** which is the first part of the **gce-startup.sh** and the only part that requires interactive input from the user:  
 * account: xxxxx-compute@developer.gserviceaccount.com
 * project: my-project
 * configure GCE settings: y
 * zone: us-central1-a
 
 # Usage
-initialize_gce.sh \[OPTION\]
+gce-startup.sh \[OPTION\]
 
 Default useage (i.e. no options) will install a light-weight XFCE GUI desktop
 
