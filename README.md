@@ -1,12 +1,12 @@
-# Initialize a new GCE machine for data science use
-This script automates installation and set-up of a Google Cloud Platform Compute Engine (GCE) VM, installs a GUI desktop and Rstudio server. The script is designed to be compatible with users on remote ChromeOS systems, so inital authentication involves a guided interactive auth login step. All other GCE, desktop and Rstudio setup is automated.
+# Start up a new GCE virtual machine, install GUI desktop, Rstudio and set-up Google Storage Bucket for data science use
+This script automates set-up of a Google Cloud Platform Compute Engine (GCE) VM, installs a GUI desktop and Rstudio server, links GUI desktop and RStudio to Google storage buckets for easy access. . The script is designed to be compatible with users on remote ChromeOS systems, so inital authentication involves a guided interactive auth login step. All other GCE, Google Storage, firewall rules, desktop and Rstudio setup steps are automated.
 
 Google Cloud Platform is a very flexible computing platform. However, automated start-up of Google Compute Engine instances, and set up of related services (i.e. Google Storage or BigQuery) can be time consuming. These tasks can also be difficult for beginners to learn easily. This script aims to simplify set-up of GCE VMs related services. It creates necessary firewall rules, installs Rstudio, and creates a buckets for general storage and R based data science projects. Additionally, as learning to use commands in a bash terminal can have a steep learning curve, it also installs one of several GUI desktops (i.e. a light xfce or a heavier gnome version) to interact with the VM remotely.
 
-Several processes in this script can either be automated further (such as Oauth authentication) or made more secure (such as SOCK proxy instead of using public facing firewall rule). However, if you know what these features are, you can adapt this script accordingly, or you don't need this script.
+Several processes in this script can either be automated further (such as Oauth authentication) or made more secure (such as SOCKS proxy instead of using public facing firewall rule). However, if you know what these features are, you can adapt this script accordingly, or you probably don't need this script at all.
 
-# GCE Set-Up and Running Initialization Script
-If you have any trouble getting this script, vncserver, or Rstudio server to run: create a new project which will reset any networking rules to defaults. Use Google Cloud Console to create the new project as outlined [here](https://cloud.google.com/resource-manager/docs/creating-managing-projects).
+# GCE Set-Up and Running Startup Script
+If you have any trouble getting this script, accessing the GUI desktop by vncserver, or Rstudio server: either stop all VMs in your current project, or better yet, create a new project. Creating a new project will reset any networking rules to defaults and ensures you have the standard compute engine service account used to authorize the gcloud program. If you decide to create a new project, use Google Cloud Console to create the new project as outlined [here](https://cloud.google.com/resource-manager/docs/creating-managing-projects).
 
 Start up a GCE VM as described [here](https://cloud.google.com/compute/docs/quickstart-linux). Choose the following options, leave everything else default. Other options might be compatible with the script, but have not been validated. Complete the following:
 * Instance Name: your choice
@@ -16,7 +16,7 @@ Start up a GCE VM as described [here](https://cloud.google.com/compute/docs/quic
 
 After VM is running, click "connect SSH" button. In the window that pops up copy and paste the following 7 commands:
 
-git clone https://github.com/ctrhodes/gce-initialize.git
+git clone https://github.com/ctrhodes/gce-startup.git
 
 mkdir -p $HOME/run
 
