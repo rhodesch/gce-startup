@@ -16,7 +16,6 @@ Start up a GCE VM as described [here](https://cloud.google.com/compute/docs/quic
 
 After VM is running, click "connect SSH" button. In the window that pops up copy and paste the following 7 commands:
 
-
 git clone https://github.com/ctrhodes/gce-startup.git
 
 mkdir -p $HOME/run
@@ -30,7 +29,6 @@ source ~/.bashrc
 chmod 755 $HOME/run/initialize_gce.sh
 
 initialize_gce.sh
-
 
 Optional: Before running **initialize_gce.sh**, edit the script and change the password to a password of your choice:  
 nano ~/run/initialize_gce.sh  
