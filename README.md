@@ -1,4 +1,4 @@
-# Rstudio GUI and Storage on Google Compute Engine
+# Rstudio on Google Compute Engine with GUI and Storage
 This script automates set-up of a Google Cloud Platform Compute Engine (GCE) VM, installs a GUI desktop and Rstudio server, links GUI desktop and RStudio to Google storage buckets for easy access. . The script is designed to be compatible with users on remote ChromeOS systems, so inital authentication involves a guided interactive auth login step. All other GCE, Google Storage, firewall rules, desktop and Rstudio setup steps are automated.
 
 Google Cloud Platform is a very flexible computing platform. However, automated start-up of Google Compute Engine instances, and set up of related services (i.e. Google Storage or BigQuery) can be time consuming. These tasks can also be difficult for beginners to learn easily. This script aims to simplify set-up of GCE VMs related services. It creates necessary firewall rules, installs Rstudio, and creates a buckets for general storage and R based data science projects. Additionally, as learning to use commands in a bash terminal can have a steep learning curve, it also installs one of several GUI desktops (i.e. a light xfce or a heavier gnome version) to interact with the VM remotely.
@@ -16,19 +16,19 @@ Start up a GCE VM as described [here](https://cloud.google.com/compute/docs/quic
 
 After VM is running, click "connect SSH" button. In the window that pops up copy and paste the following 7 commands:
 
-git clone https://github.com/ctrhodes/gce-startup.git
+**git clone https://github.com/ctrhodes/gce-startup.git**
 
-mkdir -p $HOME/run
+**mkdir -p $HOME/run**
 
-mv gce-startup/gce-startup.sh $HOME/run
+**mv gce-startup/gce-startup.sh $HOME/run**
 
-echo 'export PATH=$PATH:$HOME/run' >> ~/.bashrc
+**echo 'export PATH=$PATH:$HOME/run' >> ~/.bashrc**
 
-source ~/.bashrc
+**source ~/.bashrc**
 
-chmod 755 $HOME/run/gce-startup.sh
+**chmod 755 $HOME/run/gce-startup.sh**
 
-gce-startup.sh
+**gce-startup.sh**
 
 Optional: Before running **gce-startup.sh**, edit the script and change the password to a password of your choice:  
 nano ~/run/initialize_gce.sh  
