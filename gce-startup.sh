@@ -206,11 +206,14 @@ REPO="deb $MIRROR/bin/linux/ubuntu xenial/"
 echo "$REPO" | sudo sh -c 'cat >> /etc/apt/sources.list'
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
+RSTUDIO_VERSION="rstudio-server-1.1.383-amd64.deb"
+
 sudo apt-get update
 sudo apt-get --yes install r-base
 sudo apt-get --yes install gdebi-core
-wget https://download2.rstudio.org/rstudio-server-1.0.153-amd64.deb
-sudo gdebi --non-interactive rstudio-server-1.0.153-amd64.deb
+wget https://download2.rstudio.org/$RSTUDIO_VERSION
+sudo gdebi --non-interactive $RSTUDIO_VERSION
+
 sudo apt-get --yes install libcurl4-openssl-dev libxml2-dev libssl-dev
 
 
