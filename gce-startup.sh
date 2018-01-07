@@ -96,8 +96,8 @@ ln -s /mnt/gcs-bucket-R $HOME/gcs-bucket-R
 #cron runs in subshell so it won't print test cases like echo "hello"
 (crontab -l 2>/dev/null; echo "@reboot gcsfuse $BUCKET_GEN /mnt/gcs-bucket") | crontab -
 (crontab -l 2>/dev/null; echo "@reboot gcsfuse $BUCKET_R /mnt/gcs-bucket-R") | crontab -
-(crontab -l 2>/dev/null; echo "*/5 * * * * gsutil mv $HOME/gcs-put/* gs://$BUCKET_GEN") | crontab -
-(crontab -l 2>/dev/null; echo "*/5 * * * * gsutil mv $HOME/gcs-put-R/* gs://$BUCKET_R") | crontab -
+(crontab -l 2>/dev/null; echo "*/10 * * * * gsutil mv $HOME/gcs-put/* gs://$BUCKET_GEN") | crontab -
+(crontab -l 2>/dev/null; echo "*/10 * * * * gsutil mv $HOME/gcs-put-R/* gs://$BUCKET_R") | crontab -
 (crontab -l 2>/dev/null; echo "") | crontab -
 
 
