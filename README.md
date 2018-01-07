@@ -28,7 +28,7 @@ After VM is running, click "connect SSH" button. In the window that pops up copy
 
 **chmod 755 $HOME/run/gce-startup.sh**
 
-**gce-startup.sh**
+**gce-startup.sh -f**
 
 Optional: Before running **gce-startup.sh**, edit the script and change the password to a password of your choice:  
 nano ~/run/initialize_gce.sh  
